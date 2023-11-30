@@ -18,7 +18,7 @@ Run a server that plays audio with `aplay`:
 
 ``` sh
 script/run \
-  --uri 'tcp://127.0.0.1:10900' \
+  --uri 'tcp://127.0.0.1:10601' \
   --program 'aplay -r 22050 -c 1 -f S16_LE -t raw' \
   --rate 22050 \
   --width 2 \
