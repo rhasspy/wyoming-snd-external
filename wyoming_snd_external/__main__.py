@@ -89,11 +89,10 @@ class ExternalEventHandler(AsyncEventHandler):
         elif AudioStop.is_type(event.type):
             await self.write_event(Played().event())
         elif AudioChunk.is_type(event.type):
+            await self._start_proc()
+
             chunk = AudioChunk.from_event(event)
             chunk = self._chunk_converter.convert(chunk)
-
-            if self._proc is None:
-                await self._start_proc()
 
             assert self._proc is not None
             assert self._proc.stdin is not None
@@ -104,8 +103,9 @@ class ExternalEventHandler(AsyncEventHandler):
         return True
 
     async def _start_proc(self) -> None:
-        if self._proc is not None:
-            await self._stop_proc()
+        if (self._proc is not None) and (self._proc.returncode is None):
+            # Still running
+            return
 
         _LOGGER.debug("Running %s", self.command)
         self._proc = await asyncio.create_subprocess_exec(
