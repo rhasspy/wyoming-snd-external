@@ -17,6 +17,6 @@ RUN script/setup
 COPY script/run ./script/
 COPY docker/run ./
 
-EXPOSE 10600
+EXPOSE 10601
 
 ENTRYPOINT ["/app/run"]

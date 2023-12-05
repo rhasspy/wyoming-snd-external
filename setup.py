@@ -5,7 +5,6 @@ import setuptools
 from setuptools import setup
 
 this_dir = Path(__file__).parent
-module_dir = this_dir / "wyoming_handle_external"
 
 requirements = []
 requirements_path = this_dir / "requirements.txt"
@@ -28,7 +27,7 @@ setup(
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
-        "License :: OSI Approved :: Apache Software License",
+        "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
