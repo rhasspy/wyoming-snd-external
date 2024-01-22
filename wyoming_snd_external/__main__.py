@@ -42,8 +42,13 @@ async def main() -> None:
     parser.add_argument("--uri", default="stdio://", help="unix:// or tcp://")
     #
     parser.add_argument("--debug", action="store_true", help="Log DEBUG messages")
+    parser.add_argument(
+        "--log-format", default=logging.BASIC_FORMAT, help="Format for log messages"
+    )
     args = parser.parse_args()
-    logging.basicConfig(level=logging.DEBUG if args.debug else logging.INFO)
+    logging.basicConfig(
+        level=logging.DEBUG if args.debug else logging.INFO, format=args.log_format
+    )
     _LOGGER.debug(args)
 
     _LOGGER.info("Ready")
