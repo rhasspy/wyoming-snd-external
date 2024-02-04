@@ -127,7 +127,7 @@ class ExternalEventHandler(AsyncEventHandler):
         finally:
             self._proc = None
 
-    async def disconnected(self) -> None:
+    async def disconnect(self) -> None:
         await self._stop_proc()
 
 
