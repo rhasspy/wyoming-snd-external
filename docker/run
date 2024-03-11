@@ -18,7 +18,7 @@ fi
 
 /app/script/run \
     --uri tcp://0.0.0.0:10601 \
-    --program "aplay -D ${device} -r 16000 -c 1 -f S16_LE -t raw" \
-    --rate 16000  \
+    --program "aplay -D ${device} -r 22050 -c 1 -f S16_LE -t raw" \
+    --rate 22050  \
     --width 2 \
     --channels 1 "${args[@]}"
