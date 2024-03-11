@@ -123,11 +123,12 @@ class ExternalEventHandler(AsyncEventHandler):
             return
 
         try:
-            self._proc.terminate()
+            self._proc.stdin.write_eof()
+            await self._proc.stdin.wait_closed()
         finally:
             self._proc = None
 
-    async def disconnected(self) -> None:
+    async def disconnect(self) -> None:
         await self._stop_proc()
 
 
